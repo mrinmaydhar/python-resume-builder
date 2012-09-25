@@ -51,9 +51,9 @@
 
 {\LARGE \textsc{ \so{ {{ CONTACT_INFO.name }} } }}
 
-\so{ {{ CONTACT_INFO.address_1 }} }\textbullet 
-\so{ {{ CONTACT_INFO.city }}, {{ CONTACT_INFO.state }} {{ CONTACT_INFO.zip }}}
-\\
+{% if CONTACT_INFO.address_1 %}\so{ {{ CONTACT_INFO.address_1 }} }\textbullet{% endif %}
+{% if CONTACT_INFO.city and CONTACT_INFO.state and CONTACT_INFO.zip %}\so{ {{ CONTACT_INFO.city }}, {{ CONTACT_INFO.state }} {{ CONTACT_INFO.zip }}}\\{% endif %}
+
 \so{ \Telefon {{ CONTACT_INFO.phone }} }\textbullet
 \so{ \Letter {{ CONTACT_INFO.email }}}
 \end{center}
