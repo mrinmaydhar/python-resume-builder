@@ -1,0 +1,115 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage[T1]{fontenc}
+
+% font
+\usepackage{tgpagella}
+
+% space out text
+\usepackage{soul}
+
+%special characters
+\usepackage{marvosym}
+
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
+
+% manual indentation for non-lists
+\newenvironment{indentsection}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{ #1 } }%
+	\item[]%
+}
+{\end{list}}
+
+% unindent non-lists
+\newenvironment{unindentsection}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{-0.5#1}}%
+	\item[]%
+}
+{\end{list}}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\splitrow}[2]
+{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+	#1 &
+	#2 \\
+\end{tabular*}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CONTENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\begin{center}
+
+{\LARGE \textsc{ \so{ {{ CONTACT_INFO.name }} } }}
+
+\so{ {{ CONTACT_INFO.address_1 }} }\textbullet 
+\so{ {{ CONTACT_INFO.city }}, {{ CONTACT_INFO.state }} {{ CONTACT_INFO.zip }}}
+\\
+\so{ \Telefon {{ CONTACT_INFO.phone }} }\textbullet
+\so{ \Letter {{ CONTACT_INFO.email }}}
+\end{center}
+
+\hrule
+\vspace{-0.4em}
+\subsection*{\so{TECHNICAL SKILLS}}
+
+\begin{indentsection}{\parindent}
+\hyphenpenalty=1000
+\begin{description*}
+	{% for skill in TECHNICAL_SKILLS %}\item[{{ skill.category }}:]
+	{{ skill.entry }}{% if skill.category=='Frameworks' and skill.latex %}, \LaTeX{% endif %}{% endfor %}
+\end{description*}
+\end{indentsection}
+
+\hrule
+\vspace{-0.4em}
+\subsection*{\so{WORK EXPERIENCE}}
+
+\begin{itemize}
+	\parskip=0.1em
+
+{% for job in WORK_EXPERIENCE %}
+	\item
+      \splitrow{\textbf{ {{ job.name }} }}{\textbf{ {{ job.location }} }}\\
+    {% for position in job.positions %}\splitrow
+		{\emph{ {{ position.name }} }}
+		{\emph{ {{ position.dates }} }}
+    {% endfor %}
+	\begin{itemize*}
+    {% for duty in job.duties %}
+		\item {{ duty }}
+    {% endfor %}
+	\end{itemize*}
+
+{% endfor %}
+\end{itemize}
+
+
+\hrule
+\vspace{-0.4em}
+\subsection*{\so{EDUCATION}}
+
+\begin{itemize}
+	\parskip=0.1em
+
+	\item 
+	\splitrow
+		{\textbf{ {{ EDUCATION.name }} }}
+		{\textbf{ {{ EDUCATION.location }} }}
+	\\
+	\splitrow
+		{\emph{ {{ EDUCATION.degree }} }}
+		{\emph{ {{ EDUCATION.dates }} }}
+
+\end{itemize}
+
+\end{document}
