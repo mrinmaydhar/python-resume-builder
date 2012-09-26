@@ -1,8 +1,11 @@
 \documentclass[11pt, letterpaper]{article}
-\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage[letterpaper,margin=0.5in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{mdwlist}
 \usepackage[T1]{fontenc}
+
+% url support
+\usepackage[hidelinks]{hyperref}
 
 % font
 \usepackage{tgpagella}
@@ -53,9 +56,9 @@
 
 {% if CONTACT_INFO.address_1 %}\so{ {{ CONTACT_INFO.address_1 }} }\textbullet{% endif %}
 {% if CONTACT_INFO.city and CONTACT_INFO.state and CONTACT_INFO.zip %}\so{ {{ CONTACT_INFO.city }}, {{ CONTACT_INFO.state }} {{ CONTACT_INFO.zip }}}\\{% endif %}
-
 \so{ \Telefon {{ CONTACT_INFO.phone }} }\textbullet
-\so{ \Letter {{ CONTACT_INFO.email }}}
+\so{ \Letter {{ CONTACT_INFO.email }} }\textbullet
+{% if CONTACT_INFO.github %}\so{ \Coffeecup {{ CONTACT_INFO.github }} }\\{% endif %}
 \end{center}
 
 \hrule

@@ -14,7 +14,7 @@ INSTRUCTIONS
 ------------
 From the project directory, run:  
   
-~$ nerd_resume.py [source_file.py]  
+~$ ./build_resume.py [source_file.py]  
 ~$ pdf_latex [source_file.tex]  
   
 TO-DO
