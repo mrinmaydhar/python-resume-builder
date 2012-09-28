@@ -1,3 +1,17 @@
+# an example resume source file.
+
+# RESUME is a hash of subsections.  The simple
+# subsections are stored as a hash of values, while the
+# more complicated subsections are lists of hashes.
+# Where possible we prefer hashes to nest under lists
+# and lists to nest under hashes, with the exeception of
+# the parent hash, RESUME, storing subsections as hashes.
+
+# TODO: create a better way to store this information.
+# When there's time, use lex to create a simple DSL
+# that works like .md or the ascii output.
+#
+
 RESUME = {
     'CONTACT_INFO' : {
         'name' : 'Jim Jones', 

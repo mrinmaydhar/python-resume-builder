@@ -4,11 +4,11 @@ This project uses a python template system to produce many output formats of the
   
 REQUIREMENTS
 ------------
-- *nix(?) (tested with Debian Wheezy)  
-- Python (tested with 2.7.3)  
-- Jinja (tested with 2.6, via debian package python-jinja2)  
-- pdflatex (tested with debian package texlive-full)  
-- a *LOT* of LaTeX packages.  (tested with the 2GB+ texlive-full package!)  
+- *nix                        (tested with Debian Wheezy)  
+- Python                      (tested with 2.7.3)  
+- Jinja                       (tested with 2.6, via debian package python-jinja2)  
+- pdflatex                    (tested with debian package texlive-full)  
+- a *LOT* of LaTeX packages.  (tested with the 2GB+ texlive-full package, rather than grabbing individual libraries)
   
 INSTRUCTIONS
 ------------
@@ -20,4 +20,5 @@ From the project directory, run:
 TO-DO
 -----
 - Update main script to validate arguments  
-- Add usage statement to main script  
+- Add usage statement to main script
+- change resume source_file format to a friendlier format than .py.
