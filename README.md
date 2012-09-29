@@ -22,3 +22,4 @@ TO-DO
 - Update main script to validate arguments  
 - Add usage statement to main script
 - change resume source_file format to a friendlier format than .py.
+- add octocat icon next to github url!

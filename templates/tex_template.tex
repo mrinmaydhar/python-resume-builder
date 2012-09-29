@@ -52,13 +52,13 @@
 
 \begin{center}
 
-{\LARGE \textsc{ \so{ {{ CONTACT_INFO.name }} } }}
+{\Huge \textsc{ \so{ {{ CONTACT_INFO.name }} } }}
 
 {% if CONTACT_INFO.address_1 %}\so{ {{ CONTACT_INFO.address_1 }} }\textbullet{% endif %}
 {% if CONTACT_INFO.city and CONTACT_INFO.state and CONTACT_INFO.zip %}\so{ {{ CONTACT_INFO.city }}, {{ CONTACT_INFO.state }} {{ CONTACT_INFO.zip }}}\\{% endif %}
-\so{ \Telefon {{ CONTACT_INFO.phone }} }\textbullet
-\so{ \Letter {{ CONTACT_INFO.email }} }\textbullet
-{% if CONTACT_INFO.github %}\so{ \Coffeecup {{ CONTACT_INFO.github }} }\\{% endif %}
+\so{ \Telefon {{ CONTACT_INFO.phone }} }
+\so{ \Letter {{ CONTACT_INFO.email }} }
+{% if CONTACT_INFO.github %}\so{ {\Large\Keyboard}{{ CONTACT_INFO.github }} }\\{% endif %}
 \end{center}
 
 \hrule
@@ -89,10 +89,9 @@
     {% endfor %}
 	\begin{itemize*}
     {% for duty in job.duties %}
-		\item {{ duty }}
+		\item {{ duty }}\vspace{0.4em}
     {% endfor %}
 	\end{itemize*}
-
 {% endfor %}
 \end{itemize}
 
