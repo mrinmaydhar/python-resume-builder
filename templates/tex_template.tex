@@ -56,9 +56,9 @@
 
 {% if CONTACT_INFO.address_1 %}\so{ {{ CONTACT_INFO.address_1 }} }\textbullet{% endif %}
 {% if CONTACT_INFO.city and CONTACT_INFO.state and CONTACT_INFO.zip %}\so{ {{ CONTACT_INFO.city }}, {{ CONTACT_INFO.state }} {{ CONTACT_INFO.zip }}}\\{% endif %}
-\so{ \Telefon {{ CONTACT_INFO.phone }} }
-\so{ \Letter {{ CONTACT_INFO.email }} }
-{% if CONTACT_INFO.github %}\so{ {\Large\Keyboard}{{ CONTACT_INFO.github }} }\\{% endif %}
+{% if CONTACT_INFO.github %}\so{ {{ CONTACT_INFO.github }} }{% endif %}
+\so{\Telefon {{ CONTACT_INFO.phone }} }
+\so{\Letter {{ CONTACT_INFO.email }}}
 \end{center}
 
 \hrule
