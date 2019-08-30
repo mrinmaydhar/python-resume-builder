@@ -31,11 +31,25 @@ def add_ascii_data(resume):
     templates read and render it as necessary.
     """
     for hash in resume['TECHNICAL_SKILLS']:
-        hash['ascii_whitespace'] = " " * (25 - len(hash['category']))
+        hash['ascii_whitespace'] = " " * (30 - len(hash['category']))
+    for hash in resume['EDUCATION']:
+        hash['ascii_whitespace'] = " " * (120 - len(hash['degree']))
     for hash1 in resume['WORK_EXPERIENCE']:
         for hash2 in hash1['positions']:
-            hash2['ascii_whitespace'] = " " * (26 - len(hash2['name']))
+            hash2['ascii_whitespace'] = " " * (120 - len(hash2['name']))
 
+def checkAndReplaceAmpersandInTex(current):
+    if isinstance(current, str):
+        return current.replace('&', '\&')
+    elif isinstance(current, dict):
+        for key, value in current.items():
+            current[key] = checkAndReplaceAmpersandInTex(value)
+        return current
+    elif isinstance(current, list):
+        return [checkAndReplaceAmpersandInTex(item) for item in current]
+    else:
+        return current
+        
 def main(sourceFile, outdir):
     """
     Render the templates using the source file.
@@ -52,7 +66,7 @@ def main(sourceFile, outdir):
     spec.loader.exec_module(resume_module)
     add_ascii_data(resume_module.RESUME)
     # render templates
-    template_types = ['html','tex','txt']
+    template_types = ['html','txt', 'tex']
     for ttype in template_types:
         # open the template file, make it an object
         template_string = open('templates/' + ttype + '_template.' + ttype, 'r').read()
@@ -60,6 +74,8 @@ def main(sourceFile, outdir):
         # write the rendered template to file
         filename = SAVE_AS + '.' + ttype
         with open(filename, 'w') as output:
+            if ttype == 'tex':
+                resume_module.RESUME = checkAndReplaceAmpersandInTex(resume_module.RESUME)
             output.write(template.render(resume_module.RESUME, mode=ttype))
 
 if __name__ == '__main__':

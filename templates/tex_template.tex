@@ -22,24 +22,24 @@
 % manual indentation for non-lists
 \newenvironment{indentsection}[1]%
 {\begin{list}{}%
-	{\setlength{\leftmargin}{ #1 } }%
-	\item[]%
+    {\setlength{\leftmargin}{ #1 } }%
+    \item[]%
 }
 {\end{list}}
 
 % unindent non-lists
 \newenvironment{unindentsection}[1]%
 {\begin{list}{}%
-	{\setlength{\leftmargin}{-0.5#1}}%
-	\item[]%
+    {\setlength{\leftmargin}{-0.5#1}}%
+    \item[]%
 }
 {\end{list}}
 
 % format two pieces of text, one left aligned and one right aligned
 \newcommand{\splitrow}[2]
 {\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
-	#1 &
-	#2 \\
+    #1 &
+    #2 \\
 \end{tabular*}}
 
 
@@ -68,8 +68,8 @@
 \begin{indentsection}{\parindent}
 \hyphenpenalty=1000
 \begin{description*}
-	{% for skill in TECHNICAL_SKILLS %}\item[{{ skill.category }}:]
-	{{ skill.entry }}{% if skill.category=='Frameworks' and skill.latex %}, \LaTeX{% endif %}{% endfor %}
+    {% for skill in TECHNICAL_SKILLS %}\item[{{ skill.category }}:]
+    {{ skill.entry }}{% if skill.category=='Frameworks' and skill.latex %}, \LaTeX{% endif %}{% endfor %}
 \end{description*}
 \end{indentsection}
 
@@ -78,20 +78,20 @@
 \subsection*{\so{WORK EXPERIENCE}}
 
 \begin{itemize}
-	\parskip=0.1em
+    \parskip=0.1em
 
 {% for job in WORK_EXPERIENCE %}
-	\item
+    \item
       \splitrow{\textbf{ {{ job.name }} }}{\textbf{ {{ job.location }} }}\\
     {% for position in job.positions %}\splitrow
-		{\emph{ {{ position.name }} }}
-		{\emph{ {{ position.dates }} }}
+        {\emph{ {{ position.name }} }}
+        {\emph{ {{ position.dates }} }}
     {% endfor %}
-	\begin{itemize*}
+    \begin{itemize*}
     {% for duty in job.duties %}
-		\item {{ duty }}\vspace{0.4em}
+        \item {{ duty }}\vspace{0.4em}
     {% endfor %}
-	\end{itemize*}
+    \end{itemize*}
 {% endfor %}
 \end{itemize}
 
@@ -101,17 +101,12 @@
 \subsection*{\so{EDUCATION}}
 
 \begin{itemize}
-	\parskip=0.1em
-
-	\item 
-	\splitrow
-		{\textbf{ {{ EDUCATION.name }} }}
-		{\textbf{ {{ EDUCATION.location }} }}
-	\\
-	\splitrow
-		{\emph{ {{ EDUCATION.degree }} }}
-		{\emph{ {{ EDUCATION.dates }} }}
-
+  \parskip=0.1em
+{% for school in EDUCATION %}
+    \item 
+    \splitrow{\textbf{ {{ school.name }} }}{\textbf{ {{ school.location }} }}\\
+    \splitrow{\emph{ {{ school.degree }} }}{\emph{ {{ school.dates }} }}
+{% endfor %}          
 \end{itemize}
 
 \end{document}
