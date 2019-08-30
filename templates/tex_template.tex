@@ -109,4 +109,22 @@
 {% endfor %}          
 \end{itemize}
 
+\hrule
+\vspace{-0.4em}
+\subsection*{\so{VOLUNTEERING}}
+
+\begin{itemize}
+    \parskip=0.1em
+
+{% for activity in VOLUNTEERING %}
+    \item
+      \splitrow{\textbf{ {{ activity.name }} }}{\textbf{ {{ activity.location }} }}\\
+    {% for position in activity.positions %}\splitrow
+        {\emph{ {{ position.title }} }}
+        {\emph{ {{ position.dates }} }}
+    {% endfor %}
+
+{% endfor %}
+\end{itemize}
+
 \end{document}

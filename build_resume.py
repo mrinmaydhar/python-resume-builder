@@ -34,6 +34,9 @@ def add_ascii_data(resume):
         hash['ascii_whitespace'] = " " * (30 - len(hash['category']))
     for hash in resume['EDUCATION']:
         hash['ascii_whitespace'] = " " * (120 - len(hash['degree']))
+    for hash1 in resume['VOLUNTEERING']:
+        for hash2 in hash1['positions']:
+            hash2['ascii_whitespace'] = " " * (120 - len(hash2['title']))
     for hash1 in resume['WORK_EXPERIENCE']:
         for hash2 in hash1['positions']:
             hash2['ascii_whitespace'] = " " * (120 - len(hash2['name']))
