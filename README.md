@@ -13,9 +13,9 @@ INSTRUCTIONS
 ------------
 From the project directory, run:  
 
-~$ ./build_resume.py [source_file.py] [out_directory]
+~$ ./build_resume.py [source_file.py] [out_directory]  
 ~$ rubber [source_file.tex]  
-  
+
 TO-DO
 -----
 - Update main script to validate arguments  
