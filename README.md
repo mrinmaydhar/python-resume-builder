@@ -22,3 +22,5 @@ TO-DO
 - Add usage statement to main script
 - change resume source_file format to a friendlier format than .py.
 - add octocat icon next to github url!
+- Create a .deb installation file for offline use
+- Create a web app using flask, deploy it to Heroku, and host on static GitHub Pages
