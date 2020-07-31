@@ -32,11 +32,24 @@
       </ul>
     {% endfor %}
 
-
     <h2>EDUCATION</h2>
-    <p>
-      {{ EDUCATION.name }}<br/>
-      {{ EDUCATION.degree }}, {{ EDUCATION.dates }}<br/>
-    </p>
+    {% for school in EDUCATION %}
+      <p>
+        {{ school.name }} - {{ school.location}} <br/>
+        {{ school.degree }}, {{ school.dates }} <br/>
+      </p>
+    {% endfor %}
+
+    <h2>VOLUNTEERING</h2>
+    {% for activity in VOLUNTEERING %}
+    <strong>{{ activity.name }}, {{ activity.location}}</strong><br/>
+      
+      <ul>
+        {% for position in activity.positions %}
+        <li>{{ position.title }}, {{ position.dates }}</li>
+        {% endfor %}
+      </ul>    
+    {% endfor %}
+      
   </body>
 </html>

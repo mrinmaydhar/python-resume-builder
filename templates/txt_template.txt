@@ -22,6 +22,14 @@ WORK EXPERIENCE
 
 EDUCATION
 =========
+{% for school in EDUCATION %}
+{{ school.name }} - {{ school.location}}
+{{ school.degree }}{{ school.ascii_whitespace }}{{ school.dates }}{% endfor %}
 
-{{ EDUCATION.name }}
-{{ EDUCATION.degree }}, {{ EDUCATION.dates }}
+VOLUNTEERING
+===============
+{% for activity in VOLUNTEERING %}
+{{ activity.name }} - {{ activity.location }}
+{% for position in activity.positions %}
+* {{ position.title }}{{ position.ascii_whitespace }}{{ position.dates }}{% endfor %}
+{% endfor %}
